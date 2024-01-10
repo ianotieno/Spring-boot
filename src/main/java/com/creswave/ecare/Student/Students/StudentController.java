@@ -8,21 +8,23 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping(path="api/v1/students")
+
 public class StudentController {
 
 
     private  final StudentService studentService;
  @Autowired
     public StudentController(StudentService studentService) {
-        this.studentService = studentService;
+
+     this.studentService = studentService;
     }
-    @GetMapping()
+    @GetMapping(path = "/get/students")
     public List<Student> getStudents(){
  return studentService.getStudents();
     }
-    @PostMapping
+    @PostMapping(path = "/add/students")
     public  void  registerNewStudent(@RequestBody Student student){
+
      studentService.addNewStudent(student);
     }
    @DeleteMapping(path = "{studentId}")
